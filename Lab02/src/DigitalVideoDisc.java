@@ -1,3 +1,4 @@
+package Lab02
 
 public class DigitalVideoDisc {
     private String tilte;

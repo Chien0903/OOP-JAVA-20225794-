@@ -1,4 +1,4 @@
-
+package Lab02
 
 public class Cart {
     public static  final int MAX_NUMBERS_ORDERED = 20;  //So luong DVD toi da
