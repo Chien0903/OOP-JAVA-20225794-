@@ -47,6 +47,7 @@ public class DigitalVideoDisc {
         this.cost = cost;
     }
 
+
     public int getLength() {
         return length;
     }

@@ -17,19 +17,3 @@ public class Aims {
     }
 }
 
-public class DigitalVideoDisc {
-    private String title;
-    private String category;
-
-    // Constructor tạo DVD theo title
-    public DigitalVideoDisc(String title, boolean isTitle) {
-        if (isTitle) {
-            this.title = title;
-        }
-    }
-
-    // Constructor tạo DVD theo category
-    public DigitalVideoDisc(String category) {
-        this.category = category;
-    }
-}
