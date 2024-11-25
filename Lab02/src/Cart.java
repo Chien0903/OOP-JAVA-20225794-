@@ -1,4 +1,4 @@
-package Lab02
+package Lab02;
 
 public class Cart {
     public static  final int MAX_NUMBERS_ORDERED = 20;  //So luong DVD toi da
@@ -19,6 +19,39 @@ public class Cart {
         }
         else {
             System.out.println("The Cart is full. Can't add!");
+        }
+    }
+    public void addDigitalVideoDisc (DigitalVideoDisc[] dvdList) {
+        for(DigitalVideoDisc dvd : dvdList) {
+            if (quantity == MAX_NUMBERS_ORDERED) {
+                System.out.println("The Cart is full. Can't add!" + dvd.getTilte());
+                break;
+            }
+            this.itemOrdered[quantity] = dvd;
+            this.quantity++;
+            totalCost += dvd.getCost();
+        }
+    }
+    public void addDigitalVideoDisc (DigitalVideoDisc dvd1, DigitalVideoDisc dvd2) {
+        if(quantity == MAX_NUMBERS_ORDERED) {
+            System.out.println("The Cart is full. Can't add!" + dvd1.getTilte() + "and" + dvd2.getTilte());
+        }
+        else {
+            if(quantity < MAX_NUMBERS_ORDERED) {
+                this.itemOrdered[quantity] = dvd1;
+                this.quantity++;
+                totalCost += dvd1.getCost();
+                System.out.println("Added " + dvd1.getTilte() + " successful!");
+            }
+            if(quantity < MAX_NUMBERS_ORDERED) {
+                this.itemOrdered[quantity] = dvd2;
+                this.quantity++;
+                totalCost += dvd2.getCost();
+                System.out.println("Added " + dvd2.getTilte() + " successful!");
+            }
+            else {
+                System.out.println("The Cart is full. Can't add!" + dvd2.getTilte());
+            }
         }
     }
     //Xoa DVD ra khoi gio hang
@@ -51,7 +84,48 @@ public class Cart {
     //dua ra danh sach cac DVD
     public void DisplayCart() {
         for(int i = 0; i < quantity; i++) {
-            System.out.println((i + 1) + ": " + itemOrdered[i].getTilte());
+            System.out.println((i + 1) + ": " + itemOrdered[i].getTilte() + " with ID = " + itemOrdered[i].getId());
+        }
+    }
+    // In giỏ hàng
+    public void printCart() {
+        System.out.println("***********************CART***********************");
+        System.out.println("Ordered Items:");
+        float totalCost = 0;
+        for (int i = 0; i < quantity; i++) {
+            System.out.println((i + 1) + ". " + itemOrdered[i].toString());
+            totalCost += itemOrdered[i].getCost();
+        }
+        System.out.println("Total cost: " + totalCost + " $");
+        System.out.println("***************************************************");
+    }
+    // Tìm kiếm DVD theo id
+    public void searchById(int id) {
+        boolean found = false;
+        for (int i = 0; i < quantity; i++) {
+            DigitalVideoDisc disc = itemOrdered[i];
+            if (disc.getId() == id) {
+                System.out.println("Found: " + disc.toString());
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            System.out.println("No DVD found with ID: " + id);
+        }
+    }
+    // Tìm kiếm DVD theo tiêu đề
+    public void searchByTitle(String title) {
+        boolean found = false;
+        for (int i = 0; i < quantity; i++) {
+            DigitalVideoDisc disc = itemOrdered[i];
+            if (disc.isMatch(title)) {
+                System.out.println("Found: " + disc.toString());
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("No DVD found with title: " + title);
         }
     }
 }

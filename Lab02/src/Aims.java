@@ -1,4 +1,4 @@
-package Lab02
+package Lab02;
 
 public class Aims {
     public static void main(String[] args) {
@@ -12,6 +12,9 @@ public class Aims {
         anOrder.addDigitalVideoDisc(dvd2);
         DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin", "Animation" , "George Lucas", 18.99f);
         anOrder.addDigitalVideoDisc(dvd3);
+        //anOrder.addDigitalVideoDisc(dvd1,dvd2);
+        //DigitalVideoDisc[] dvdList = {dvd1,dvd2,dvd3};
+        //anOrder.addDigitalVideoDisc(dvdList);
         anOrder.DisplayCart();
         //Print total Cost of items in the cart
         System.out.println("Total cost is:" + anOrder.Total());
